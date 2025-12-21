@@ -58,6 +58,28 @@ AI-With-You provides an **automated, workflow-driven validation pipeline** where
 
 ---
 
+### 🧩 How Motia Is Used in AI-With-You
+Why Motia?
+
+AI-With-You is not a single API call — it is a multi-step, stateful workflow involving:
+
+- External systems (GitHub)
+
+- Long-running operations (dependency install, tests)
+
+- Conditional logic (pass/fail, approval)
+
+- Human-in-the-loop decisions
+
+- Retry & failure handling
+
+Traditional backend frameworks struggle to express this cleanly without complex async code.
+
+Motia is used as a workflow orchestration engine to model this entire process explicitly.
+
+---
+
+
 ## 🔄 How It Works (End-to-End Flow)
 
 ### 1️⃣ User provides repository context
