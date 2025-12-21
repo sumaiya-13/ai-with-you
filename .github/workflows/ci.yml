@@ -1,0 +1,24 @@
+name: AI-With-You CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup environment
+        run: echo "Setting up project environment"
+
+      - name: Run tests
+        run: |
+          echo "Running automated tests"
+          echo "auth.test.js failed"
+          echo "db.test.js timeout"
+
+      - name: AI review simulation
+        run: echo "AI generated review and suggestions"

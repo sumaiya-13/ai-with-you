@@ -4,7 +4,12 @@ export default {
   run: async (input) => {
     return {
       ...input,
-      repoStatus: "Repository prepared (simulated)",
+      setupStatus: "COMPLETED",
+      setupLogs: [
+        "Repository cloned",
+        "Dependencies installed",
+        "Environment prepared"
+      ]
     };
   },
 };

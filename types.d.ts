@@ -12,8 +12,11 @@ declare module 'motia' {
   }
 
   interface Handlers {
+    'FinalResponseStep': EventHandler<never, never>
+    'ExecuteRepoTests': EventHandler<never, { topic: 'ai-with-you.tests.completed'; data: never }>
+    'AIReviewStep': EventHandler<never, { topic: 'ai-with-you.review.completed'; data: never }>
     'LogGreeting': EventHandler<{ requestId: string; greeting: string; processedBy: string }, never>
-    'AI-With-You API': ApiRouteHandler<Record<string, unknown>, ApiResponse<200, { success: boolean; reviewSummary?: string; issues?: Array<string>; suggestion?: string; approvalStatus: string; message: string }>, never>
+    'AI-With-You API': ApiRouteHandler<Record<string, unknown>, ApiResponse<200, { success: boolean; message: string }>, never>
     'ProcessGreeting': EventHandler<{ timestamp: string; appName: string; greetingPrefix: string; requestId: string }, { topic: 'greeting-processed'; data: { requestId: string; greeting: string; processedBy: string } }>
   }
     
