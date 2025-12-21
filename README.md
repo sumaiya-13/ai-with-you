@@ -1,204 +1,175 @@
-AI-With-You 🤖
-
-AI-Assisted Repository Setup, Testing & Human-in-the-Loop Code Review using Motia
+# AI-With-You 🤖  
+**AI-Assisted Repository Setup, Testing & Human-in-the-Loop Code Review using Motia**
 
 ---
 
-📌 Overview
+## 📌 Overview
 
-AI-With-You is a backend automation system built using Motia workflows that helps developers validate code changes inside an existing GitHub repository.
+**AI-With-You** is a backend automation system built using **Motia workflows** that helps developers validate code changes inside an existing GitHub repository.
 
 Instead of manually setting up projects, installing dependencies, and interpreting test failures, AI-With-You:
 
-Automatically sets up a repository
+- Automatically sets up a repository  
+- Runs real tests  
+- Analyzes results  
+- Provides AI-style feedback  
+- Requires human approval before accepting risky changes  
 
-Runs real tests
-
-Analyzes results
-
-Provides AI-style feedback
-
-Requires human approval before accepting risky changes
-
-The system demonstrates safe AI-assisted automation, where AI supports decisions but never replaces human control.
+The system demonstrates **safe AI-assisted automation**, where AI supports decisions but **never replaces human control**.
 
 ---
 
-
-❓ Problem Statement
+## ❓ Problem Statement
 
 In real-world development workflows, developers usually write or modify code inside existing repositories, not as isolated files.
 
 However, validating those changes is still painful:
 
-Developers must manually:
+### Developers must manually:
+- Set up the project  
+- Install dependencies  
+- Run tests  
+- Understand failures  
 
-Set up the project
+### Automated CI systems often:
+- Blindly fail without explanation  
+- Or approve without context  
 
-Install dependencies
-
-Run tests
-
-Understand failures
-
-Automated CI systems often:
-
-Blindly fail without explanation
-
-Or approve without context
-
-AI tools may:
-
-Suggest changes without executing the code
-
-Modify files without human consent
+### AI tools may:
+- Suggest changes without executing the code  
+- Modify files without human consent  
 
 This creates:
-
-Wasted time
-
-Low trust in automation
-
-Risky approvals
-
-Poor developer experience
+- Wasted time  
+- Low trust in automation  
+- Risky approvals  
+- Poor developer experience  
 
 ---
 
+## 💡 Solution — AI-With-You
 
-💡 Solution — AI-With-You
+AI-With-You provides an **automated, workflow-driven validation pipeline** where:
 
-AI-With-You provides an automated, workflow-driven validation pipeline where:
-
-The repository is treated as the source of truth
-
-Tests are executed in a real environment
-
-AI assists in interpretation
-
-Humans retain final control
+- The repository is treated as the **source of truth**  
+- Tests are executed in a **real environment**  
+- AI assists in interpretation  
+- **Humans retain final control**  
 
 ---
 
+## 🔄 How It Works (End-to-End Flow)
 
-🔄 How It Works (End-to-End Flow)
-
-1️⃣ User provides repository context
+### 1️⃣ User provides repository context
 The user specifies:
-
-GitHub username
-
-Repository name
+- GitHub username  
+- Repository name  
 
 This represents the codebase containing the user’s written or modified code.
 
-2️⃣ Automatic project setup
+---
+
+### 2️⃣ Automatic project setup
 AI-With-You:
-
-Clones the repository
-
-Installs dependencies automatically (npm install)
-
-3️⃣ Automated test execution
-
-Runs the repository’s test suite (npm test)
-
-Captures real execution results and logs
-
-4️⃣ AI-style review
-
-Test results are analyzed
-
-AI determines whether the code is safe to approve
-
-Issues and suggestions are generated if tests fail
-
-5️⃣ Human-in-the-loop approval
-
-If tests fail → approval is blocked by default
-
-The user can explicitly approve if they decide it is acceptable
-
-6️⃣ Final decision output
-The system reports:
-
-Review summary
-
-Issues (if any)
-
-Approval status: APPROVED or PENDING
+- Clones the repository  
+- Installs dependencies automatically (`npm install`)  
 
 ---
 
+### 3️⃣ Automated test execution
+- Runs the repository’s test suite (`npm test`)  
+- Captures real execution results and logs  
 
+---
 
-🔐 Core Design Principle
+### 4️⃣ AI-style review
+- Test results are analyzed  
+- AI determines whether the code is safe to approve  
+- Issues and suggestions are generated if tests fail  
 
-AI-With-You never auto-approves failing code.
-Humans always have the final say.
+---
+
+### 5️⃣ Human-in-the-loop approval
+- If tests fail → approval is **blocked by default**  
+- The user can explicitly approve if they decide it is acceptable  
+
+---
+
+### 6️⃣ Final decision output
+The system reports:
+- Review summary  
+- Issues (if any)  
+- Approval status: `APPROVED` or `PENDING`  
+
+---
+
+## 🔐 Core Design Principle
+
+> **AI-With-You never auto-approves failing code.  
+Humans always have the final say.**
 
 This ensures:
-
-Safety over blind automation
-
-Trust in AI-assisted systems
-
-Clear accountability
+- Safety over blind automation  
+- Trust in AI-assisted systems  
+- Clear accountability  
 
 ---
 
-🧠 Why Repository-Level Validation (Important)
+## 🧠 Why Repository-Level Validation (Important)
 
-AI-With-You validates code at the repository level, not by uploading individual files.
+AI-With-You validates code at the **repository level**, not by uploading individual files.
 
-Why?
+### Why?
+- In real workflows, code does not exist in isolation  
+- Tests depend on the entire codebase  
+- Auto-modifying files without full context is risky  
 
-In real workflows, code does not exist in isolation
+This approach mirrors real CI/CD systems (GitHub Actions, Jenkins, etc.), while adding **AI-assisted reasoning and human approval gates**.
 
-Tests depend on the entire codebase
-
-Auto-modifying files without full context is risky
-
-This approach mirrors real CI/CD systems (GitHub Actions, Jenkins, etc.), while adding AI-assisted reasoning and human approval gates.
-
-Future Extension
-
-File-level uploads and AI-generated patches can be added on top of this pipeline after human approval.
+### Future Extension
+File-level uploads and AI-generated patches can be added **on top of this pipeline after human approval**.
 
 ---
 
+## 🏗️ Architecture (Motia-Based)
 
-
-🏗️ Architecture (Motia-Based)
 POST API
-  ↓
+--->
 ai-with-you.start (Event)
-  ↓
+--->
 ExecuteRepoTests
-  - Clone repo
-  - Install dependencies
-  - Run tests
-  ↓
+
+- Clone repo
+
+- Install dependencies
+
+- Run tests
+--->
 ai-with-you.tests.completed (Event)
-  ↓
+--->
 AIReviewStep
-  ↓
+--->
 ai-with-you.review.completed (Event)
-  ↓
+--->
 FinalResponseStep
 
+
 ---
 
 
-📁 Core Project Structure
+
+---
+
+## 📁 Core Project Structure
+
 src/
 ├── hello/
-│   └── hello-api.step.ts        # API entry point
+│ └── hello-api.step.ts # API entry point
 ├── steps/
-│   ├── execute-tests.step.js    # Repo setup & test execution
-│   ├── ai-review.step.js        # AI review logic
-│   └── final-response.step.js  # Final decision & logging
-├── ai_with_you_flow.ts          # Motia workflow definition
+│ ├── execute-tests.step.js # Repo setup & test execution
+│ ├── ai-review.step.js # AI review logic
+│ └── final-response.step.js # Final decision & logging
+├── ai_with_you_flow.ts # Motia workflow definition
 
 
 Other files are auto-generated by Motia and development tools.
@@ -206,45 +177,53 @@ Other files are auto-generated by Motia and development tools.
 ---
 
 
-⚙️ Local Setup Instructions
-1️⃣ Prerequisites
+## ⚙️ Local Setup Instructions
 
-Node.js (v18+ recommended)
+### 1️⃣ Prerequisites
+- Node.js (v18+ recommended)  
+- npm  
+- Python 3.10+  
+- Git  
 
-npm
+---
 
-Python 3.10+
+### 2️⃣ Clone the Repository
 
-Git
-
-2️⃣ Clone the Repository
+```bash
 git clone https://github.com/sumaiya-13/AI-WITH-YOU.git
 cd ai-with-you
 
-3️⃣ Install Node Dependencies
+---
+
+### 3️⃣ Install Node Dependencies
 npm install
 
-4️⃣ Install Motia Python Environment
+---
+
+### 4️⃣ Install Motia Python Environment
 npx motia install
 
-5️⃣ Start the Server
+---
+
+### 5️⃣ Start the Server
 npx motia start
+ 
+---
 
 
 You should see:
 
-🚀 Server ready and listening on port 3000
+### 🚀 Server ready and listening on port 3000
 🔗 Open http://0.0.0.0:3000 to open workbench
-
 
 ---
 
 
-🧪 Example Test Cases
+###🧪 Example Test Cases
 Endpoint
 POST http://localhost:3000/hello
 
-✅ Test Case 1 — Default Review (No Manual Approval)
+###✅ Test Case 1 — Default Review (No Manual Approval)
 {
   "githubUsername": "sindresorhus",
   "repoName": "slugify"
@@ -256,7 +235,7 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: PENDING
 
-✅ Test Case 2 — Human Approval Override
+###✅ Test Case 2 — Human Approval Override
 {
   "githubUsername": "sindresorhus",
   "repoName": "slugify",
@@ -269,74 +248,79 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: APPROVED
 
-✅ Test Case 3 — Another Real Repository
+###✅ Test Case 3 — Another Real Repository
 {
   "githubUsername": "vercel",
   "repoName": "serve"
 }
 
 
-Used to demonstrate:
+ Used to demonstrate:
 
-Real-world dependency complexity
+- Real-world dependency complexity
 
-Safe AI behavior
+- Safe AI behavior
 
-Human-in-the-loop control
-
----
-
-
-📊 Observability
-
-All steps are visible in:
-
-Terminal logs
-
-Motia Workbench
-
-Each execution has a unique trace
-
-Failures, retries, and approvals are transparent
-
----
-
-🏁 Hackathon Notes
-
-Built from scratch during the hackathon
-
-Uses Motia’s Steps, Events, and Workflows
-
-No UI required — backend execution is the demo
-
-Focus on correctness, safety, and orchestration
-
----
-
-🚀 Future Work
-
-File-level code uploads
-
-AI-generated patch suggestions
-
-Optional auto-merge after approval
-
-GitHub OAuth integration
+- Human-in-the-loop control
 
 ---
 
 
+###📊 Observability
 
-🙌 Conclusion
+- All steps are visible in:
+
+     - Terminal logs
+
+     - Motia Workbench
+
+- Each execution has a unique trace
+
+- Failures, retries, and approvals are transparent
+
+
+---
+
+
+###🏁 Hackathon Notes
+
+- Built from scratch during the hackathon
+
+- Uses Motia’s Steps, Events, and Workflows
+
+- No UI required — backend execution is the demo
+
+- Focus on correctness, safety, and orchestration
+
+
+---
+
+
+###🚀 Future Work
+
+- File-level code uploads
+
+- AI-generated patch suggestions
+
+- Optional auto-merge after approval
+
+- GitHub OAuth integration
+
+
+---
+
+
+###🙌 Conclusion
 
 AI-With-You demonstrates how Motia can orchestrate real-world automation pipelines involving:
 
-Repository setup
+- Repository setup
 
-Test execution
+- Test execution
 
-AI-assisted reasoning
+- AI-assisted reasoning
 
-Human approval
+- Human approval
 
 It is a foundation for next-generation CI, AI code review systems, and safe developer tooling.
+---
