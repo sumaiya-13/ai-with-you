@@ -223,11 +223,11 @@ You should see:
 ---
 
 
-###🧪 Example Test Cases
+### 🧪 Example Test Cases
 Endpoint
 POST http://localhost:3000/hello
 
-###✅ Test Case 1 — Default Review (No Manual Approval)
+### ✅ Test Case 1 — Default Review (No Manual Approval)
 ```bash
 {
   "githubUsername": "sindresorhus",
@@ -241,7 +241,7 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: PENDING
 
-###✅ Test Case 2 — Human Approval Override
+### ✅ Test Case 2 — Human Approval Override
 ```bash
 {
   "githubUsername": "sindresorhus",
@@ -255,7 +255,7 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: APPROVED
 
-###✅ Test Case 3 — Another Real Repository
+### ✅ Test Case 3 — Another Real Repository
 ```bash
 {
   "githubUsername": "vercel",
@@ -275,7 +275,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###📊 Observability
+### 📊 Observability
 
 - All steps are visible in:
 
@@ -291,7 +291,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🏁 Hackathon Notes
+### 🏁 Hackathon Notes
 
 - Built from scratch during the hackathon
 
@@ -305,7 +305,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🚀 Future Work
+### 🚀 Future Work
 
 - File-level code uploads
 
@@ -319,7 +319,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🙌 Conclusion
+### 🙌 Conclusion
 
 AI-With-You demonstrates how Motia can orchestrate real-world automation pipelines involving:
 
