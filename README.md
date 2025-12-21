@@ -195,17 +195,17 @@ cd ai-with-you
 
 ---
 
-### 3️⃣ Install Node Dependencies
+ 3️⃣ Install Node Dependencies
 npm install
 
 ---
 
-### 4️⃣ Install Motia Python Environment
+ 4️⃣ Install Motia Python Environment
 npx motia install
 
 ---
 
-### 5️⃣ Start the Server
+ 5️⃣ Start the Server
 npx motia start
  
 ---
@@ -213,17 +213,17 @@ npx motia start
 
 You should see:
 
-### 🚀 Server ready and listening on port 3000
+ 🚀 Server ready and listening on port 3000
 🔗 Open http://0.0.0.0:3000 to open workbench
 
 ---
 
 
-###🧪 Example Test Cases
+🧪 Example Test Cases
 Endpoint
 POST http://localhost:3000/hello
 
-###✅ Test Case 1 — Default Review (No Manual Approval)
+✅ Test Case 1 — Default Review (No Manual Approval)
 {
   "githubUsername": "sindresorhus",
   "repoName": "slugify"
@@ -235,7 +235,7 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: PENDING
 
-###✅ Test Case 2 — Human Approval Override
+✅ Test Case 2 — Human Approval Override
 {
   "githubUsername": "sindresorhus",
   "repoName": "slugify",
@@ -248,7 +248,7 @@ Expected Result:
 FINAL REVIEW SUMMARY: Automated tests failed
 APPROVAL STATUS: APPROVED
 
-###✅ Test Case 3 — Another Real Repository
+✅ Test Case 3 — Another Real Repository
 {
   "githubUsername": "vercel",
   "repoName": "serve"
@@ -266,7 +266,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###📊 Observability
+📊 Observability
 
 - All steps are visible in:
 
@@ -282,7 +282,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🏁 Hackathon Notes
+🏁 Hackathon Notes
 
 - Built from scratch during the hackathon
 
@@ -296,7 +296,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🚀 Future Work
+🚀 Future Work
 
 - File-level code uploads
 
@@ -310,7 +310,7 @@ APPROVAL STATUS: APPROVED
 ---
 
 
-###🙌 Conclusion
+🙌 Conclusion
 
 AI-With-You demonstrates how Motia can orchestrate real-world automation pipelines involving:
 
